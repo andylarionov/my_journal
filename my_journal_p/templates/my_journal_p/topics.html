@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой журнал - Обсуждения</title>
+</head>
+<body>
+{% extends "my_journal_p/base.html" %}
+
+{% block content %}
+
+  <p>Темы:</p>
+
+  <ul>
+      {% for topic in topics %}
+        <li>
+          <a href="{% url 'my_journal_p:topic' topic.id %}">{{topic}}</a>
+        </li>
+      {% empty %}
+        <li>No topics have been added yet</li>
+      {% endfor %}
+  </ul>
+
+{% endblock content %}
+</body>
+</html>
