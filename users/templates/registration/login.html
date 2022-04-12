@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой журнал - авторизация</title>
+</head>
+<body>
+{% extends "my_journal_p/base.html"%}
+{% block content %}
+  {% if form.errors %}
+  <p>Логин и пароль не обнаружены в системе. Пожалуйста, введите корректные данные</p>
+  {% endif %}
+<form method="post" action="{%url 'users:login' %}">
+      {% csrf_token %}
+      {{form.as_p}}
+
+      <button name="submit">Войти</button>
+      <input type="hidden" name="text" value="{% url 'my_journal_p:index' %}"/>
+      </form>
+{% endblock content %}
+</body>
+</html>

@@ -11,11 +11,17 @@
 
   <p>Тема: {{topic}}</p>
   <p>Entries:</p>
+  <p>
+      <a href="{% url 'my_journal_p:new_entry' topic.id %}">Добавить новый комментарий</a>
+  </p>
   <ul>
       {% for entry in entries %}
         <li>
           <p>{{ entry.date_added|date:'M d, Y H:i'}}</p>
           <p>{{entry.text|linebreaks}}</p>
+          <p>
+              <a href="{%url 'my_journal_p:edit_entry' entry.id%}">Редактировать запись</a>
+          </p>
         </li>
       {% empty %}
         <li>There are no entries for this topics yet</li>

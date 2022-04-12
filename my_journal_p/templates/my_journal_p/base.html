@@ -1,6 +1,13 @@
+
 <p>
   <a href="{% url 'my_journal_p:index' %}">Мой журнал</a> -
-  <a href="{% url 'my_journal_p:topics' %}">Темы</a>
+  <a href="{% url 'my_journal_p:topics' %}">Темы</a> -
+  {% if user.is_authenticated %}
+    Hello, {{ user.username }}
+    <a href="{% url 'users:logout' %}">Выход</a>
+  {% else %}
+    <a href="{%url 'users:login' %}">Войти</a>
+  {% endif%}
 </p>
 
 {% block content %}{% endblock content %}

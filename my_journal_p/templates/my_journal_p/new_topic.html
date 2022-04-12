@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать тему</title>
+</head>
+<body>
+{% extends "my_journal_p/base.html" %}
+{% block content %}
+<p>Добавить тему</p>
+
+<form action="{%url 'my_journal_p:new_topic' %}" method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button name="submit">Добавить тему</button>
+</form>
+{% endblock content %}
+</body>
+</html>
