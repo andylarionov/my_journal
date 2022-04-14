@@ -7,20 +7,21 @@
 <body>
 {% extends "my_journal_p/base.html" %}
 
-{% block content %}
+{% block page_header %}
 
-  <p>Темы:</p>
-
+  <h1>Темы:</h1>
+{% endblock page_header %}
+{%block content%}
   <ul>
       {% for topic in topics %}
-        <li>
+        <li><h3>
           <a href="{% url 'my_journal_p:topic' topic.id %}">{{topic}}</a>
-        </li>
+        </h3></li>
       {% empty %}
-        <li>No topics have been added yet</li>
+        <li><h3>Отсутствуют темы для просмотраt</h3></li>
       {% endfor %}
   </ul>
-  <a href="{% url 'my_journal_p:new_topic' %}">Добавить новую тему</a>
+  <h3><a href="{% url 'my_journal_p:new_topic' %}">Добавить новую тему</a></h3>
 {% endblock content %}
 </body>
 </html>

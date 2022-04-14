@@ -7,11 +7,20 @@
 <body>
 {% extends "my_journal_p/base.html" %}
 
-{% block content %}
-    <p>Мой журнал</p>
-    <p>Локальная социальная сеть, предназначенная для рабочего общения</p>
-    <p><a href="https://vk.com/andrew.larionov" target="_blank">Разработчик</a> </p>
-{% endblock content %}
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Добро пожаловать!</h1>
+    <p class="lead">Рады приветствовать Вас в рабочей среде "Мой журнал".
+        В настоящее время проект находится в разработке</p>
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Зарегистрироваться &raquo;</a>
+</div>
+
+{% endblock page_header %}
 
 </body>
+<footer>
+    {% block content %}
+  <p align="center"><a href="https://vk.com/andrew.larionov" target="_blank">Разработчик</a></p>
+{% endblock content %}
+</footer>
 </html>

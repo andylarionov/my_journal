@@ -6,14 +6,19 @@
 </head>
 <body>
 {% extends "my_journal_p/base.html" %}
-
+{% load bootstrap4 %}
+{% block page_header %}
+  <h2>Регистрация пользователя</h2>
+{% endblock page_header %}
 {% block content %}
 
-    <form method="post" action="{% url 'users:register' %}">
+    <form method="post" action="{% url 'users:register' %}" class="form">
         {% csrf_token %}
-        {{form.as_p}}
-
-        <button name="submit">register</button>
+        {% bootstrap_form form%}
+        <!--{{form.as_p}}-->
+        {%buttons%}
+        <button name="submit" class="btn btn-primary">Регистрация</button>
+        {%endbuttons%}
         <input type="hidden" name="next" value="{% url 'my_journal_p:index' %}"/>
     </form>
 

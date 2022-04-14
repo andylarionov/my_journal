@@ -7,26 +7,28 @@
 <body>
 {% extends "my_journal_p/base.html" %}
 
-{% block content %}
-
-  <p>Тема: {{topic}}</p>
-  <p>Entries:</p>
+{% block page_header %}
+  <h3>Тема: {{topic}}</h3>
+{% endblock page_header %}
+{%block content%}
   <p>
       <a href="{% url 'my_journal_p:new_entry' topic.id %}">Добавить новый комментарий</a>
   </p>
-  <ul>
+
       {% for entry in entries %}
-        <li>
-          <p>{{ entry.date_added|date:'M d, Y H:i'}}</p>
-          <p>{{entry.text|linebreaks}}</p>
-          <p>
-              <a href="{%url 'my_journal_p:edit_entry' entry.id%}">Редактировать запись</a>
-          </p>
-        </li>
-      {% empty %}
-        <li>There are no entries for this topics yet</li>
+      <div class="card mb-3">
+      <h4 class="card-header">
+          {{ entry.date_added|date:'M d, Y H:i'}}
+          <small><a href="{%url 'my_journal_p:edit_entry' entry.id%}">Редактировать запись</a></small>
+      </h4>
+      <div class="card-body">
+           {{entry.text|linebreaks}}
+      </div>
+      </div>
+       {% empty %}
+        <p>There are no entries for this topics yet</p>
       {% endfor %}
-  </ul>
+
 
 {% endblock content %}
 </body>

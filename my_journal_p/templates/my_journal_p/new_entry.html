@@ -6,14 +6,21 @@
 </head>
 <body>
 {% extends "my_journal_p/base.html" %}
-{% block content %}
-    <p><a href="{% url 'my_journal_p:topic' topic.id %}">{{topic}}</a></p>
+{% load bootstrap4 %}
+{% block page_header %}
+  <h2>Добавить новый комментарий к:</h2>
+{% endblock page_header %}
 
-    <p>Добавить новый комментарий</p>
-    <form action="{% url 'my_journal_p:new_entry' topic.id %}" method="post">
+{% block content %}
+    <h3><a href="{% url 'my_journal_p:topic' topic.id %}">{{topic}}</a></h3>
+
+    <form action="{% url 'my_journal_p:new_entry' topic.id %}" method="post" class="form">
         {% csrf_token %}
-        {{form.as_p}}
-        <button name="submit">Добавить комментарий</button>
+        {% bootstrap_form form%}
+    <!--{{form.as_p}}-->
+    {%buttons%}
+      <button name="submit" class="btn btn-primary">Добавить новый комментарий</button>
+    {%endbuttons%}
     </form>
 {%endblock content%}
 </body>
