@@ -1,1 +1,1 @@
-web: gunicorn my_journal.wsgi --log-file--
+web: gunicorn my_journal.wsgi
